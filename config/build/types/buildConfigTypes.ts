@@ -8,6 +8,8 @@ export interface BuildPaths {
   entry: string;
   html: string;
   build: string;
+  src: string;
+  alias: string;
 }
 
 // Тип для путей для сборки

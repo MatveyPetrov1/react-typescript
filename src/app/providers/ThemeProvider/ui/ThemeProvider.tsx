@@ -3,7 +3,7 @@ import {
   AppTheme,
   ThemeContext,
   LOCAL_STORAGE_THEME_KEY,
-} from "./ThemeContext";
+} from "@/app/providers/ThemeProvider/lib/ThemeContext";
 
 //Так как метод getItem возвращает строку, а в generic состояния theme указан тип AppTheme, мы должны явно привести его к этому типу, а так же указать что делать в случае если theme в local storage вообще не найдется
 const defaultTheme =
