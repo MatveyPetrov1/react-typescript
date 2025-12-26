@@ -8,12 +8,12 @@ type Mods = Record<string, boolean | string>;
 
 export function classNames(
   cls: string,
-  mods: Mods,
-  additional: string[]
+  mods: Mods = {},
+  additional: string[] = []
 ): string {
   return [
     cls,
-    ...additional,
+    ...additional.filter(Boolean),
     // 1. Собираем "массив из массивов" с помощью метода entries класса Object
     // 2. Фильтруем, оставляя только те "массивы", у которых правдивое value
     // 3. Оставляем только ключи при помощи map
