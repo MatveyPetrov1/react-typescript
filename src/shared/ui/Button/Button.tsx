@@ -7,13 +7,13 @@ export enum ButtonTheme {
   OUTLINE = "outline",
 }
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: React.ReactNode;
   theme?: ButtonTheme;
 }
 
-export const Button: React.FC<Props> = (props) => {
+export const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   const { className, children, theme, ...otherProps } = props;
 
   return (

@@ -19,6 +19,7 @@ export function classNames(
     // 3. Оставляем только ключи при помощи map
     // 4. Разворачиваем наш получившийся массив в основной массив
     ...Object.entries(mods)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .filter(([key, value]) => Boolean(value))
       .map(([key]) => key),
   ].join(" ");

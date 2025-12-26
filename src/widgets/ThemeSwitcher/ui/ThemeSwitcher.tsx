@@ -4,11 +4,11 @@ import { useTheme, AppTheme } from "@/app/providers/ThemeProvider";
 import { DarkThemeIcon, LightThemeIcon } from "@/shared/assets/icons";
 import { Button } from "@/shared/ui/Button/Button";
 
-interface Props {
+interface ThemeSwitcherProps {
   className?: string;
 }
 
-export const ThemeSwitcher: React.FC<Props> = (props) => {
+export const ThemeSwitcher: React.FC = (props: ThemeSwitcherProps) => {
   const { className } = props;
   const { toggleTheme, theme } = useTheme();
 

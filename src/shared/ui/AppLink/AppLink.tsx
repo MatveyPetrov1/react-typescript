@@ -8,12 +8,12 @@ export enum AppLinkTheme {
   RED = "red",
 }
 
-interface Props extends LinkProps {
+interface AppLinkProps extends LinkProps {
   className?: string;
   theme?: AppLinkTheme;
 }
 
-export const AppLink: React.FC<Props> = (props) => {
+export const AppLink: React.FC<AppLinkProps> = (props: AppLinkProps) => {
   const { className, children, theme = "primary", ...otherProps } = props;
 
   return (
