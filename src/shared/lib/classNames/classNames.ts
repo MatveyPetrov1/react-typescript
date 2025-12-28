@@ -11,7 +11,7 @@ export function classNames(
   mods: Mods = {},
   additional: string[] = []
 ): string {
-  return [
+  const classNameString = [
     cls,
     ...additional.filter(Boolean),
     // 1. Собираем "массив из массивов" с помощью метода entries класса Object
@@ -23,4 +23,10 @@ export function classNames(
       .filter(([key, value]) => Boolean(value))
       .map(([key]) => key),
   ].join(" ");
+
+  if (classNameString[0] === " ") {
+    return classNameString.slice(1);
+  }
+
+  return classNameString;
 }

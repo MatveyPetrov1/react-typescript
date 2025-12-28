@@ -47,5 +47,17 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
 
-  return [fileLoader, svgLoader, typescriptLoader, sassLoader];
+  const babelLoader = {
+    test: /\.(?:js|mjs|cjs)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        targets: "defaults",
+        presets: [["@babel/preset-env"]],
+      },
+    },
+  };
+
+  return [fileLoader, svgLoader, babelLoader, typescriptLoader, sassLoader];
 }
