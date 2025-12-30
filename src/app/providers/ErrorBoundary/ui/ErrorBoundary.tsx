@@ -1,3 +1,8 @@
+/* eslint-disable */
+
+//Это тупо шаблон, я хз (на классах в 2к26 пишут только пидоры)
+//Обертка при какой либо ошибке прокидывает на экран компонент <PageError/> из widgets (да да это наши fabrics)
+
 import { PageError } from "@/widgets/PageError/PageError";
 import React, { ErrorInfo } from "react";
 
@@ -30,6 +35,7 @@ class ErrorBoundary extends React.Component<
 
   render() {
     const { hasError } = this.state;
+
     const { children } = this.props;
     if (this.state.hasError) {
       // You can render any custom fallback UI

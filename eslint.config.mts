@@ -12,6 +12,7 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
     rules: {
       "react/react-in-jsx-scope": "off",
+      "typescript-eslint/ban-ts-comment": "off",
     },
   },
   tseslint.configs.recommended,
