@@ -1,5 +1,5 @@
 import { Button } from "@/shared/ui/Button/Button";
-import * as styles from "./PageError.module.scss";
+import styles from "./PageError.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
 interface Props {

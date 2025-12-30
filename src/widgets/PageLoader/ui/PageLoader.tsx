@@ -1,5 +1,5 @@
 import { Loader } from "@/shared/ui/Loader/Loader";
-import * as styles from "./PageLoader.module.scss";
+import styles from "./PageLoader.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
 interface Props {

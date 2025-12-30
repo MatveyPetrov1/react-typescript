@@ -1,6 +1,6 @@
-import * as styles from "./Sidebar.module.scss";
+import styles from "./Sidebar.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button } from "@/shared/ui/Button/Button";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
 import React from "react";
 
@@ -18,11 +18,17 @@ export const Sidebar: React.FC = (props: SidebarProps) => {
 
   return (
     <div
+      data-testid="sidebar"
       className={classNames(styles.Sidebar, { [styles.collapsed]: collapsed }, [
         className,
       ])}
     >
-      <Button type="button" onClick={onToggleSidebar}>
+      <Button
+        data-testid="sidebar-button"
+        theme={ButtonTheme.CLEAR}
+        type="button"
+        onClick={onToggleSidebar}
+      >
         toggle
       </Button>
       <div className={styles.switchers}>

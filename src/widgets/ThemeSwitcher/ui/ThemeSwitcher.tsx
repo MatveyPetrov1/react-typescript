@@ -1,4 +1,4 @@
-import * as styles from "./ThemeSwitcher.module.scss";
+import styles from "./ThemeSwitcher.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useTheme, AppTheme } from "@/app/providers/ThemeProvider";
 import { DarkThemeIcon, LightThemeIcon } from "@/shared/assets/icons";
