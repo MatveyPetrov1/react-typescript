@@ -14,7 +14,7 @@ export const ThemeSwitcher: React.FC = (props: ThemeSwitcherProps) => {
 
   return (
     <Button
-      className={classNames(styles.ThemeSwitcher, {}, [
+      className={classNames(styles.themeSwitcher, {}, [
         className,
         styles[theme],
       ])}

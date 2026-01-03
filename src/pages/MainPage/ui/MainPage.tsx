@@ -1,9 +1,7 @@
-import { BugButton } from "@/app/providers/ErrorBoundary";
-
 const MainPage = () => {
   return (
     <div>
-      <BugButton />
+      {/* <BugButton /> */}
       Главная страница
     </div>
   );

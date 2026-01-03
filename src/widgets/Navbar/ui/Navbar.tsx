@@ -8,7 +8,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC = ({ className }: NavbarProps) => {
   return (
-    <div className={classNames(styles.Navbar, {}, [className])}>
+    <div className={classNames(styles.navbar, {}, [className])}>
       <div className={styles.links}>
         <AppLink
           theme={AppLinkTheme.SECONDARY}
@@ -17,7 +17,7 @@ export const Navbar: React.FC = ({ className }: NavbarProps) => {
         >
           Главная
         </AppLink>
-        <AppLink theme={AppLinkTheme.RED} to="/about">
+        <AppLink theme={AppLinkTheme.SECONDARY} to="/about">
           О сайте
         </AppLink>
       </div>

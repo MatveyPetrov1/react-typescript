@@ -5,7 +5,6 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 export enum AppLinkTheme {
   PRIMARY = "primary",
   SECONDARY = "secondary",
-  RED = "red",
 }
 
 interface AppLinkProps extends LinkProps {
@@ -18,7 +17,7 @@ export const AppLink: React.FC<AppLinkProps> = (props: AppLinkProps) => {
 
   return (
     <Link
-      className={classNames(styles.AppLink, {}, [className, styles[theme]])}
+      className={classNames(styles.appLink, {}, [className, styles[theme]])}
       {...otherProps}
     >
       {children}

@@ -14,7 +14,7 @@ export const PageError: React.FC = (props: Props) => {
   };
 
   return (
-    <div className={classNames(styles.PageError, {}, [className])}>
+    <div className={classNames(styles.pageError, {}, [className])}>
       <p>Произошла непредвиденная ошибка</p>
       <Button onClick={reloadPage}>Обновить страницу</Button>
     </div>

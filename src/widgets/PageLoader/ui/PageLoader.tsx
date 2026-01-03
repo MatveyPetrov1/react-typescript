@@ -10,7 +10,7 @@ export const PageLoader: React.FC = (props: Props) => {
   const { className } = props;
 
   return (
-    <div className={classNames(styles.PageLoader, {}, [className])}>
+    <div className={classNames(styles.pageLoader, {}, [className])}>
       <Loader />
     </div>
   );

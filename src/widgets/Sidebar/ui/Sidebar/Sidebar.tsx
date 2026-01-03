@@ -19,13 +19,13 @@ export const Sidebar: React.FC = (props: SidebarProps) => {
   return (
     <div
       data-testid="sidebar"
-      className={classNames(styles.Sidebar, { [styles.collapsed]: collapsed }, [
+      className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [
         className,
       ])}
     >
       <Button
         data-testid="sidebar-button"
-        theme={ButtonTheme.CLEAR}
+        theme={ButtonTheme.OUTLINE}
         type="button"
         onClick={onToggleSidebar}
       >
