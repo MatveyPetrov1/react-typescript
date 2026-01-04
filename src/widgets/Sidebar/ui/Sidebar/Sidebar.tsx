@@ -1,8 +1,12 @@
+import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import styles from "./Sidebar.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
 import React from "react";
+import { RoutePath } from "@/shared/config/route/routeConfig";
+import AboutIcon from "@/shared/assets/icons/about-20-20.svg";
+import MainIcon from "@/shared/assets/icons/main-20-20.svg";
 
 interface SidebarProps {
   className?: string;
@@ -25,12 +29,33 @@ export const Sidebar: React.FC = (props: SidebarProps) => {
     >
       <Button
         data-testid="sidebar-button"
-        theme={ButtonTheme.OUTLINE}
+        theme={ButtonTheme.BACKGROUND_INVERTED}
         type="button"
         onClick={onToggleSidebar}
+        className={styles.collapsedBtn}
+        square
+        size={ButtonSize.L}
       >
-        toggle
+        {collapsed ? ">" : "<"}
       </Button>
+      <div className={styles.items}>
+        <AppLink
+          className={styles.item}
+          theme={AppLinkTheme.INVERTED}
+          to={RoutePath.main}
+        >
+          <MainIcon className={styles.icon} />
+          <span className={styles.link}>Главная</span>
+        </AppLink>
+        <AppLink
+          theme={AppLinkTheme.INVERTED}
+          to={RoutePath.about}
+          className={styles.item}
+        >
+          <AboutIcon className={styles.icon} />
+          <span className={styles.link}>О сайте</span>
+        </AppLink>
+      </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
       </div>
