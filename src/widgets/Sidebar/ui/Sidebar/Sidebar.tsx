@@ -5,8 +5,7 @@ import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
 import React from "react";
 import { RoutePath } from "@/shared/config/route/routeConfig";
-import AboutIcon from "@/shared/assets/icons/about-20-20.svg";
-import MainIcon from "@/shared/assets/icons/main-20-20.svg";
+import { AboutIcon, MainIcon } from "@/shared/assets/icons";
 
 interface SidebarProps {
   className?: string;

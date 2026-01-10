@@ -11,10 +11,16 @@ const defaultTheme =
 
 interface ThemeContextProps {
   children: React.ReactNode;
+  initialTheme?: AppTheme;
 }
 
-export const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
-  const [theme, setTheme] = React.useState<AppTheme>(defaultTheme);
+export const ThemeProvider: React.FC<ThemeContextProps> = ({
+  initialTheme,
+  children,
+}) => {
+  const [theme, setTheme] = React.useState<AppTheme>(
+    initialTheme || defaultTheme
+  );
 
   //На каждый рендер компонента объект, который передается в value будет инициализироваться заново, соответсвтенно будет перерисовываться и компонент, поэтому используем useMemo(). useMemo() позволяет каждый раз не создавать новый объект, а возвращать уже существующий
   const defaultProps = React.useMemo(

@@ -24,8 +24,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config.module?.rules?.push(buildCssLoader(true));
 
-  //@ts-expect-error 123
-  config.module.rules = config.module?.rules?.map(
+  config.module!.rules = config.module?.rules?.map(
     //@ts-expect-error 123
     (rule: webpack.RuleSetRule) => {
       if (/svg/.test(rule.test as string)) {

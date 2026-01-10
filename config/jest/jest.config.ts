@@ -1,5 +1,4 @@
 import type { Config } from "jest";
-import path from "path";
 
 const config: Config = {
   clearMocks: true,
@@ -24,11 +23,12 @@ const config: Config = {
   modulePaths: [`<rootDir>/src/*`],
   setupFilesAfterEnv: [`<rootDir>config/jest/setupTests.ts`],
   moduleNameMapper: {
-    "\\.s?css$": "identity-obj-proxy",
     "^@/(.*)$": "<rootDir>/src/$1",
-    "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+    "\\.(css|scss)$": "identity-obj-proxy",
+    "\\.svg$": "<rootDir>/config/jest/jestEmptyComponent.tsx",
   },
-  // roots: ["<rootDir>"],
+  roots: ["<rootDir>"],
+  preset: "ts-jest",
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -172,7 +172,6 @@ const config: Config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [

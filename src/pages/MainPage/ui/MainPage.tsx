@@ -1,7 +1,10 @@
+import { Counter } from "@/entities/Counter";
+
 const MainPage = () => {
   return (
     <div>
       {/* <BugButton /> */}
+      <Counter />
       Главная страница
     </div>
   );
