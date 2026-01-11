@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Modal.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Portal } from "../Portal/Portal";
+import { useTheme } from "@/app/providers/ThemeProvider";
 
 interface ModalProps {
   className?: string;
@@ -13,6 +14,7 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = (props: ModalProps) => {
   const { className, children, isOpen, onClose } = props;
 
+  const { theme } = useTheme();
   const [isClosing, setIsClosing] = React.useState<boolean>(false);
   // Зачем useRef? Если по какой то причине из dom дерева демонтируется компонент модального окна, и мы попытаемся изменить несуществующее состояние, то будет пиздец. Приложение упадет с ошибкой а ты пойдешь побираться в аутсорс галеру за еду. Поэтому предотвраещаем такой исход событий, а еще желательно чистим всю асинхронщину в useEffect
   const timeRef = React.useRef<ReturnType<typeof setTimeout>>(null);
@@ -66,7 +68,7 @@ export const Modal: React.FC<ModalProps> = (props: ModalProps) => {
 
   return (
     <Portal>
-      <div className={classNames(styles.modal, mods, [className])}>
+      <div className={classNames(styles.modal, mods, [className, theme])}>
         <div className={styles.overlay} onClick={closeHandler}>
           <div onClick={onContentClick} className={classNames(styles.content)}>
             {children}

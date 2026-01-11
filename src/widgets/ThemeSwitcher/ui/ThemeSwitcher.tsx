@@ -3,6 +3,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useTheme, AppTheme } from "@/app/providers/ThemeProvider";
 import { DarkThemeIcon, LightThemeIcon } from "@/shared/assets/icons";
 import { Button } from "@/shared/ui/Button/Button";
+import { getClassShortName } from "@/shared/lib/classNames/getClassShortName";
 
 interface ThemeSwitcherProps {
   className?: string;
@@ -12,11 +13,13 @@ export const ThemeSwitcher: React.FC = (props: ThemeSwitcherProps) => {
   const { className } = props;
   const { toggleTheme, theme } = useTheme();
 
+  const { currentTheme } = getClassShortName(theme);
+
   return (
     <Button
       className={classNames(styles.themeSwitcher, {}, [
         className,
-        styles[theme],
+        styles[currentTheme],
       ])}
       type="button"
       onClick={toggleTheme}
