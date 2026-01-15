@@ -2,22 +2,28 @@ import React from "react";
 import styles from "./Modal.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Portal } from "../Portal/Portal";
-import { useTheme } from "@/app/providers/ThemeProvider";
 
 interface ModalProps {
   className?: string;
   children?: React.ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = (props: ModalProps) => {
-  const { className, children, isOpen, onClose } = props;
+  const { className, children, isOpen, onClose, lazy } = props;
 
-  const { theme } = useTheme();
+  const [isMounted, setIsMounted] = React.useState<boolean>(false);
   const [isClosing, setIsClosing] = React.useState<boolean>(false);
-  // Зачем useRef? Если по какой то причине из dom дерева демонтируется компонент модального окна, и мы попытаемся изменить несуществующее состояние, то будет пиздец. Приложение упадет с ошибкой а ты пойдешь побираться в аутсорс галеру за еду. Поэтому предотвраещаем такой исход событий, а еще желательно чистим всю асинхронщину в useEffect
+  // Зачем useRef? Если по какой то причине из dom дерева демонтируется компонент модального окна, и мы попытаемся изменить несуществующее состояние, то будет пиздец. Приложение упадет с ошибкой а ты пойдешь побираться в аутсорс галеру за еду. Поэтому предотвраещаем такой исход событий, а еще чистим всю асинхронщину в useEffect
   const timeRef = React.useRef<ReturnType<typeof setTimeout>>(null);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
 
   const ANIMATION_DELAY = 200;
 
@@ -66,9 +72,13 @@ export const Modal: React.FC<ModalProps> = (props: ModalProps) => {
     e.stopPropagation();
   };
 
+  if (lazy && !isMounted) {
+    return null;
+  }
+
   return (
     <Portal>
-      <div className={classNames(styles.modal, mods, [className, theme])}>
+      <div className={classNames(styles.modal, mods, [className])}>
         <div className={styles.overlay} onClick={closeHandler}>
           <div onClick={onContentClick} className={classNames(styles.content)}>
             {children}
