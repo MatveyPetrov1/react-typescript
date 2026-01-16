@@ -22,15 +22,15 @@ server.use(jsonServer.defaults());
 server.use(jsonServer.bodyParser);
 
 // Проверяем, авторизован ли пользователь
-server.use((req, res, next) => {
-  const authHeader = req.get("Authorization");
+// server.use((req, res, next) => {
+//   const authHeader = req.get("Authorization");
 
-  if (!authHeader) {
-    return res.status(403).json({ message: "AUTH TOKEN ERROR" });
-  }
+//   if (!authHeader) {
+//     return res.status(403).json({ message: "AUTH TOKEN ERROR" });
+//   }
 
-  next();
-});
+//   next();
+// });
 
 //Эндпоинт для логина
 

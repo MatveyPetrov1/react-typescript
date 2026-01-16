@@ -4,7 +4,6 @@ import { Story } from "@storybook/react-webpack5";
 import "@/app/styles/index.scss";
 
 export const ThemeDecorator =
-  // eslint-disable-next-line react/display-name
   (theme: AppTheme) => (StoryComponent: () => Story) => {
     return (
       <ThemeProvider initialTheme={theme}>

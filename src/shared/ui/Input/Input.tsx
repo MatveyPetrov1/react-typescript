@@ -79,6 +79,7 @@ export const Input: React.FC<InputProps> = memo((props: InputProps) => {
           //@ts-expect-error 123
           onSelect={onSelect}
           name="input"
+          autoComplete="off"
           {...otherProps}
         />
         {isFocused && (

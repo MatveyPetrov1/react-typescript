@@ -241,3 +241,18 @@ export const SizeXLDark: Story = {
   },
   decorators: [ThemeDecorator(AppTheme.DARK)],
 };
+
+export const Disabled: Story = {
+  args: {
+    children: "Button",
+    disabled: true,
+  },
+};
+
+export const DisabledDark: Story = {
+  args: {
+    children: "Button",
+    disabled: true,
+  },
+  decorators: [ThemeDecorator(AppTheme.DARK)],
+};

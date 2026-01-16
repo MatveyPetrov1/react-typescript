@@ -9,7 +9,7 @@ interface StoreProviderProps {
 }
 
 export const StoreProvider: React.FC<StoreProviderProps> = (
-  props: StoreProviderProps
+  props: StoreProviderProps,
 ) => {
   const { initialState, children } = props;
 

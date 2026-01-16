@@ -1,0 +1,31 @@
+.textWrapper {
+  padding: 0;
+}
+
+.title {
+  font: var(--font-l);
+}
+
+.text {
+  font: var(--font-m);
+}
+
+.primary {
+  .title {
+    color: var(--primary-text);
+  }
+
+  .text {
+    color: var(--secondary-text);
+  }
+}
+
+.error {
+  .title {
+    color: var(--red-light);
+  }
+
+  .text {
+    color: var(--red-dark);
+  }
+}
