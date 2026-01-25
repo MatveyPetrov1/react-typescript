@@ -1,7 +1,6 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { getCounter } from "./getCounter";
-//@ts-expect-error 123
-import { DeepPartial } from "@reduxjs/toolkit";
+import { DeepPartial } from "@/app/providers/StoreProvider";
 
 describe("Get Counter Test", () => {
   test("should return counter", () => {

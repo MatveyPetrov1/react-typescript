@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./Navbar.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
@@ -10,21 +10,22 @@ interface NavbarProps {
   className?: string;
 }
 
-export const Navbar: React.FC = ({ className }: NavbarProps) => {
-  const [isAuthModal, setIsAuthModal] = React.useState<boolean>(false);
+export const Navbar: React.FC = memo(({ className }: NavbarProps) => {
+  const [isOpenAuthModal, setIsOpenAuthModal] = React.useState<boolean>(false);
   const authData = useSelector(getUserAuthData);
   const dispatch = useDispatch();
 
   const onCloseModal = React.useCallback(() => {
-    setIsAuthModal(false);
+    setIsOpenAuthModal(false);
   }, []);
 
   const onShowModal = React.useCallback(() => {
-    setIsAuthModal(true);
+    setIsOpenAuthModal(true);
   }, []);
 
   const onLogout = React.useCallback(() => {
     dispatch(userActions.logout());
+    setIsOpenAuthModal(false);
   }, [dispatch]);
 
   if (authData) {
@@ -51,9 +52,9 @@ export const Navbar: React.FC = ({ className }: NavbarProps) => {
         Войти
       </Button>
 
-      {isAuthModal && (
-        <LoginModal onClose={onCloseModal} isOpen={isAuthModal} />
+      {isOpenAuthModal && (
+        <LoginModal onClose={onCloseModal} isOpen={isOpenAuthModal} />
       )}
     </div>
   );
-};
+});

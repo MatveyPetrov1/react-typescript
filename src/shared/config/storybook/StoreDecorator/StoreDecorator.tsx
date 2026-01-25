@@ -1,12 +1,13 @@
 import { StateSchema, StoreProvider } from "@/app/providers/StoreProvider";
-//@ts-expect-error 123
-import { Story } from "@storybook/react-webpack5";
-//@ts-expect-error 123
-import { DeepPartial, ReducersMapObject } from "@reduxjs/toolkit";
+import { DeepPartial } from "@/app/providers/StoreProvider";
+import { ReducersMapObject } from "@reduxjs/toolkit";
 import LoginReducer from "@/features/AuthByUsername/model/slice/loginSlice";
+import profileReducer from "../../../../entities/Profile/model/slice/profileSlice";
+import { ReducerList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
-const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+const defaultAsyncReducers: ReducerList = {
   loginForm: LoginReducer,
+  profile: profileReducer,
 };
 
 export const StoreDecorator =
@@ -14,11 +15,12 @@ export const StoreDecorator =
     state: DeepPartial<StateSchema>,
     asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>,
   ) =>
-  (StoryComponent: Story) => {
+  //eslint-disable-next-line
+  (StoryComponent: any) => {
     return (
       <StoreProvider
         initialState={state}
-        asyncReducers={{ ...defaultAsyncReducers, asyncReducers }}
+        asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
       >
         <StoryComponent />
       </StoreProvider>

@@ -2,7 +2,7 @@ import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import styles from "./LoginForm.module.scss";
 import { Input, InputColor } from "@/shared/ui/Input/Input";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import React from "react";
 import { loginActions } from "../../model/slice/loginSlice";
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
@@ -16,19 +16,21 @@ import {
   DynamicModuleLoader,
   ReducerList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginFormProps {
   className?: string;
+  onSuccess: () => void;
 }
 
 const initialReducers: ReducerList = {
   loginForm: LoginReducer,
 };
 
-const LoginForm: React.FC = React.memo((props: LoginFormProps) => {
-  const { className } = props;
+const LoginForm = React.memo((props: LoginFormProps) => {
+  const { className, onSuccess } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
@@ -49,13 +51,16 @@ const LoginForm: React.FC = React.memo((props: LoginFormProps) => {
     [dispatch],
   );
 
-  const onLoginClick = React.useCallback(() => {
-    //@ts-expect-error 123
-    dispatch(loginByUsername({ username, password }));
-  }, [dispatch, password, username]);
+  const onLoginClick = React.useCallback(async () => {
+    const result = dispatch(loginByUsername({ username, password }));
+    //@ts-expect-error123
+    if (result && result.meta?.requestStatus === "fulfilled") {
+      onSuccess();
+    }
+  }, [password, username, onSuccess, dispatch]);
 
   return (
-    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div className={classNames(styles.loginForm, {}, [className])}>
         <Text title="Форма авторизации" />
         {error && <Text text={error} theme={TextTheme.ERROR} />}

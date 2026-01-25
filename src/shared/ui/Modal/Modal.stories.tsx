@@ -1,4 +1,3 @@
-//@ts-expect-error 1232
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Modal } from "./Modal";
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";

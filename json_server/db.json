@@ -1,5 +1,26 @@
 {
-  "users": [{ "id": 1, "username": "admin", "password": "123" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" }
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": ""
+    }
+  ],
+  "profile": {
+    "firstname": "Тимурка битс",
+    "lastname": "Ульби123123",
+    "age": 22222,
+    "currency": "EUR",
+    "country": "Kazakhstan",
+    "city": "Moscow",
+    "username": "admin123",
+    "avatar": "https://abrakadabra.fun/uploads/posts/2022-03/1646365210_1-abrakadabra-fun-p-smeshnaya-avatarka-na-vatsap-1.jpg"
+  }
 }

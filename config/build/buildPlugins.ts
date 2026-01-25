@@ -17,6 +17,10 @@ export function buildPlugins(
       filename: "css/[name].[contenthash:8].css",
       chunkFilename: "css/[name].[contenthash:8].css",
     }),
+    new webpack.DefinePlugin({
+      __API__: JSON.stringify(options.apiUrl),
+      __IS_DEV__: JSON.stringify(options.isDev),
+    }),
   ];
 
   if (options.isDev) {

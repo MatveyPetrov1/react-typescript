@@ -1,8 +1,7 @@
-//@ts-expect-error 1232
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { LoginFormAsync as LoginForm } from "./LoginForm.async";
-import "@/app/styles/index.scss";
-import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
+import type { Meta, StoryObj } from "@storybook/react";
+import LoginForm from "./LoginForm";
+import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { AppTheme } from "@/app/providers/ThemeProvider";
 
 const meta = {
   title: "features/LoginForm",
@@ -12,18 +11,19 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  args: {},
+export const Light: Story = {
+  args: {
+    onSuccess: () => {
+      return;
+    },
+  },
 };
 
-export const WithError: Story = {
-  args: {},
-  decorators: [
-    StoreDecorator({ loginForm: "123", username: "123", error: "ERROR" }),
-  ],
-};
-
-export const Loading: Story = {
-  args: {},
-  decorators: [StoreDecorator({ isLoading: true })],
+export const Dark: Story = {
+  args: {
+    onSuccess: () => {
+      return;
+    },
+  },
+  decorators: [ThemeDecorator(AppTheme.DARK)],
 };

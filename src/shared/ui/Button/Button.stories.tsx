@@ -1,5 +1,4 @@
-//@ts-expect-error 1232
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Button, ButtonSize, ButtonTheme } from "./Button";
 import "@/app/styles/index.scss";
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";

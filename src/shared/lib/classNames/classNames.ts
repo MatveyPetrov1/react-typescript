@@ -4,12 +4,12 @@
 // Пример: classNames("remove-btn", {hovered: true, selectable: true, red: false}, ["pdg"])
 // Результат: "remove-btn hovered selectable pdg"
 
-type Mods = Record<string, boolean | string>;
+export type Mods = Record<string, boolean | string | undefined>;
 
 export function classNames(
   cls: string,
   mods: Mods = {},
-  additional: string[] = []
+  additional: Array<string | undefined> = [],
 ): string {
   const classNameString = [
     cls,

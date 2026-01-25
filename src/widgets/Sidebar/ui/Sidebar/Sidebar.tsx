@@ -1,17 +1,16 @@
-import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import styles from "./Sidebar.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
-import React from "react";
-import { RoutePath } from "@/shared/config/route/routeConfig";
-import { AboutIcon, MainIcon } from "@/shared/assets/icons";
+import React, { memo } from "react";
+import { SidebarItemsList } from "../../model/items";
+import { SidebarItem } from "../SidebarItem/SidebarItem";
 
 interface SidebarProps {
   className?: string;
 }
 
-export const Sidebar: React.FC = (props: SidebarProps) => {
+export const Sidebar: React.FC = memo((props: SidebarProps) => {
   const [collapsed, setCollapsed] = React.useState<boolean>(false);
   const { className } = props;
 
@@ -37,27 +36,15 @@ export const Sidebar: React.FC = (props: SidebarProps) => {
       >
         {collapsed ? ">" : "<"}
       </Button>
+
       <div className={styles.items}>
-        <AppLink
-          className={styles.item}
-          theme={AppLinkTheme.INVERTED}
-          to={RoutePath.main}
-        >
-          <MainIcon className={styles.icon} />
-          <span className={styles.link}>Главная</span>
-        </AppLink>
-        <AppLink
-          theme={AppLinkTheme.INVERTED}
-          to={RoutePath.about}
-          className={styles.item}
-        >
-          <AboutIcon className={styles.icon} />
-          <span className={styles.link}>О сайте</span>
-        </AppLink>
+        {SidebarItemsList.map((item) => (
+          <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+        ))}
       </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
       </div>
     </div>
   );
-};
+});

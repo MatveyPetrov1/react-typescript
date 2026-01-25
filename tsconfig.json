@@ -3,22 +3,25 @@
     "outDir": "./dist/",
     // Подсвечивает все места, где не указан тип
     "noImplicitAny": true,
-    "module": "ESNext",
+    "module": "nodenext",
     // В какую спецификацию компилируем: для поддержки большинства браузеров
     "target": "es5",
     "jsx": "react-jsx",
     // Компилятор будет обрабатывать не только ts файлы, но и js файлы
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     // Позволяет работать с пакетами, которые используют commonJS как с обычными пакетами с помощью import
     "esModuleInterop": true,
     // Если какая либо библиотека не имеет default import, лоадеры вроде ts-loader или babel-loader автомотические создают их вместо импорта с *
     "allowSyntheticDefaultImports": true,
+    // "strict": true,
     // Для абсолютного импорта
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    //@ts-ignore
+    "allowImportingTsExtensions": true
   },
   "ts-node": {
     "compilerOptions": {

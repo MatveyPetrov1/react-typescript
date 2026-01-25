@@ -32,13 +32,20 @@ export default ({ config }: { config: webpack.Configuration }) => {
       }
 
       return rule;
-    }
+    },
   );
 
   config?.module?.rules?.push({
     test: /\.svg$/,
     use: ["@svgr/webpack"],
   });
+
+  config.plugins?.push(
+    new webpack.DefinePlugin({
+      __API__: JSON.stringify(""),
+      __IS_DEV__: JSON.stringify(true),
+    }),
+  );
 
   return config;
 };

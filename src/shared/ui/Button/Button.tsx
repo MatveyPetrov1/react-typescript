@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, memo } from "react";
 import styles from "./Button.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
@@ -7,6 +7,7 @@ export enum ButtonTheme {
   CLEAR_INVERTED = "clearInverted",
   OUTLINE = "outline",
   OUTLINE_INVERTED = "outlineInverted",
+  OUTLINE_RED = "outlineRed",
   BACKGROUND = "background",
   BACKGROUND_INVERTED = "backgroundInverted",
 }
@@ -26,7 +27,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
+export const Button: React.FC<ButtonProps> = memo((props: ButtonProps) => {
   const {
     className,
     children,
@@ -43,11 +44,11 @@ export const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
       className={classNames(
         styles.button,
         { [styles.square]: square, [styles.disabled]: disabled },
-        [className, styles[theme], styles[size]]
+        [className, styles[theme], styles[size]],
       )}
       disabled={disabled}
     >
       {children}
     </button>
   );
-};
+});

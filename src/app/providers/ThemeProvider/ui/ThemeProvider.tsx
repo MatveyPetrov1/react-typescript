@@ -19,7 +19,7 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({
   children,
 }) => {
   const [theme, setTheme] = React.useState<AppTheme>(
-    initialTheme || defaultTheme
+    initialTheme || defaultTheme,
   );
 
   //На каждый рендер компонента объект, который передается в value будет инициализироваться заново, соответсвтенно будет перерисовываться и компонент, поэтому используем useMemo(). useMemo() позволяет каждый раз не создавать новый объект, а возвращать уже существующий
@@ -28,7 +28,7 @@ export const ThemeProvider: React.FC<ThemeContextProps> = ({
       theme,
       setTheme,
     }),
-    [theme]
+    [theme],
   );
 
   return (

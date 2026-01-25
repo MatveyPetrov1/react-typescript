@@ -1,6 +1,9 @@
 import React from "react";
 import { LoginFormProps } from "./LoginForm";
 
-export const LoginFormAsync = React.lazy<React.FC<LoginFormProps>>(
-  () => import("./LoginForm"),
+export const LoginFormAsync: React.FC<LoginFormProps> = React.lazy(
+  () =>
+    import("./LoginForm.tsx") as unknown as Promise<{
+      default: React.ComponentType<unknown>;
+    }>,
 );

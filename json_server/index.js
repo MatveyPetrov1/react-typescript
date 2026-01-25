@@ -22,15 +22,20 @@ server.use(jsonServer.defaults());
 server.use(jsonServer.bodyParser);
 
 // Проверяем, авторизован ли пользователь
-// server.use((req, res, next) => {
-//   const authHeader = req.get("Authorization");
 
-//   if (!authHeader) {
-//     return res.status(403).json({ message: "AUTH TOKEN ERROR" });
-//   }
+server.use((req, res, next) => {
+  if (req.path === "/login") {
+    return next();
+  }
 
-//   next();
-// });
+  const authHeader = req.get("authorization");
+
+  if (!authHeader) {
+    return res.status(403).json({ message: "AUTH TOKEN ERROR" });
+  }
+
+  next();
+});
 
 //Эндпоинт для логина
 
@@ -38,12 +43,12 @@ server.post("/login", (req, res) => {
   const { username, password } = req.body;
   const db = JSON.parse(
     // eslint-disable-next-line
-    fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8")
+    fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
   );
   const { users } = db;
 
   const userFromDb = users.find(
-    (user) => user.username === username && user.password === password
+    (user) => user.username === username && user.password === password,
   );
 
   if (userFromDb) {

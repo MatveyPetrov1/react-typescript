@@ -17,6 +17,7 @@ export interface BuildPaths {
 export interface BuildEnvOptions {
   port: number;
   mode: BuildMode;
+  apiUrl: string;
 }
 
 // Тип для всего что передается в написанную функцию, для конфигурации WP
@@ -26,4 +27,5 @@ export interface BuildOptions {
   paths: BuildPaths;
   isDev: boolean;
   port: number;
+  apiUrl: string;
 }

@@ -2,4 +2,9 @@
 
 import React from "react";
 
-export const MainPageAsync = React.lazy(() => import("./MainPage"));
+export const MainPageAsync = React.lazy(
+  () =>
+    import("./MainPage.tsx") as unknown as Promise<{
+      default: React.ComponentType<unknown>;
+    }>,
+);
