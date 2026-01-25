@@ -19,9 +19,9 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
-    },
+    }
     //@ts-ignore
-    "allowImportingTsExtensions": true
+    // "allowImportingTsExtensions": true
   },
   "ts-node": {
     "compilerOptions": {
