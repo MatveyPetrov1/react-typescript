@@ -1,6 +1,7 @@
 import webpack from "webpack";
 import { BuildOptions } from "./types/buildConfigTypes";
 import { buildCssLoader } from "./loaders/buildCssLoader";
+import { buildBabelLoader } from "./loaders/buildBabelLoader";
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
   // Если не используем тайпскрипт - нужен babel-loader
@@ -26,17 +27,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
 
-  const babelLoader = {
-    test: /\.(?:js|mjs|cjs)$/,
-    exclude: /node_modules/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        targets: "defaults",
-        presets: [["@babel/preset-env"]],
-      },
-    },
-  };
+  const babelLoader = buildBabelLoader(options);
 
   return [fileLoader, svgLoader, babelLoader, typescriptLoader, sassLoader];
 }

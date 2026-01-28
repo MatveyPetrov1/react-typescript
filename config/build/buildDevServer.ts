@@ -6,5 +6,6 @@ export function BuildDevServer(options: BuildOptions): DevServerConfiguration {
     port: options.port,
     // Важное свойство, которое позволяет обновлять страницу, находясь не на главной
     historyApiFallback: true,
+    hot: true,
   };
 }

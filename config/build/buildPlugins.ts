@@ -4,6 +4,7 @@ import path from "path";
 import { BuildOptions } from "./types/buildConfigTypes";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export function buildPlugins(
   options: BuildOptions,
@@ -26,6 +27,7 @@ export function buildPlugins(
 
   if (options.isDev) {
     plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }));
+    plugins.push(new ReactRefreshWebpackPlugin());
   }
 
   return plugins;
