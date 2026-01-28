@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --env port=3000",
     "start:dev:server": "node ./json_server/index.js",
+    "start:dev": "concurrently 'webpack serve --env port=3000' 'node ./json_server/index.js",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
@@ -41,6 +42,7 @@
     "@types/webpack-dev-server": "^4.7.2",
     "babel-jest": "^30.2.0",
     "babel-loader": "^10.0.0",
+    "concurrently": "^9.2.1",
     "css-loader": "^7.1.2",
     "eslint": "^9.39.2",
     "eslint-plugin-react": "^7.37.5",

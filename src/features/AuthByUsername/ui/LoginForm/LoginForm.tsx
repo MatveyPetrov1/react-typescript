@@ -53,7 +53,7 @@ const LoginForm = React.memo((props: LoginFormProps) => {
 
   const onLoginClick = React.useCallback(async () => {
     const result = dispatch(loginByUsername({ username, password }));
-    //@ts-expect-error123
+    //@ts-expect-error 123
     if (result && result.meta?.requestStatus === "fulfilled") {
       onSuccess();
     }

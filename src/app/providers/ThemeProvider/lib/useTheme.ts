@@ -18,7 +18,16 @@ export function useTheme(): UseThemeResult {
   }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === AppTheme.LIGHT ? AppTheme.DARK : AppTheme.LIGHT;
+    let newTheme: AppTheme;
+    if (theme === AppTheme.DARK) {
+      newTheme = AppTheme.LIGHT;
+    }
+    if (theme === AppTheme.LIGHT) {
+      newTheme = AppTheme.ORANGE;
+    }
+    if (theme === AppTheme.ORANGE) {
+      newTheme = AppTheme.DARK;
+    }
     setTheme?.(newTheme);
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
   };

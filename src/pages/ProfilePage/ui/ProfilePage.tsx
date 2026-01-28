@@ -21,6 +21,9 @@ import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { getProfileForm } from "@/entities/Profile/model/selectors/getProfileForm/getProfileForm";
 import { Currencies } from "@/entities/Currency";
 import { Country } from "@/entities/Country";
+import { getProfileValidateErrors } from "@/entities/Profile/model/selectors/getProfileValidateErrors/getProfileValidateErrors";
+import { TextTheme } from "@/shared/ui/Text/Text";
+import { Text } from "@/shared/ui/Text/Text";
 
 export interface ProfilePageProps {
   className?: string;
@@ -38,6 +41,7 @@ const ProfilePage: React.FC = (props: ProfilePageProps) => {
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadOnly);
+  const validateErrors = useSelector(getProfileValidateErrors);
 
   React.useEffect(() => {
     dispatch(fetchProfileData());
@@ -106,6 +110,10 @@ const ProfilePage: React.FC = (props: ProfilePageProps) => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames(styles.profilePage, {}, [className])}>
         <ProfilePageHeader />
+        {validateErrors?.length > 0 &&
+          validateErrors.map((error, index) => (
+            <Text key={index} theme={TextTheme.ERROR} text={error} />
+          ))}
         <ProfileCard
           data={form}
           isLoading={isLoading}

@@ -20,6 +20,7 @@ export function buildPlugins(
     new webpack.DefinePlugin({
       __API__: JSON.stringify(options.apiUrl),
       __IS_DEV__: JSON.stringify(options.isDev),
+      __PROJECT__: JSON.stringify(options.project),
     }),
   ];
 
