@@ -1,4 +1,9 @@
-import { AboutIcon, MainIcon, ProfileIcon } from "@/shared/assets/icons";
+import {
+  AboutIcon,
+  ArticleIcon,
+  MainIcon,
+  ProfileIcon,
+} from "@/shared/assets/icons";
 import { RoutePath } from "@/shared/config/route/routeConfig";
 
 export interface SidebarItemType {
@@ -24,6 +29,12 @@ export const SidebarItemsList: SidebarItemType[] = [
     path: RoutePath.profile,
     text: "Профиль",
     Icon: ProfileIcon,
+    authOnly: true,
+  },
+  {
+    path: RoutePath.articles,
+    text: "Статьи",
+    Icon: ArticleIcon,
     authOnly: true,
   },
 ];
