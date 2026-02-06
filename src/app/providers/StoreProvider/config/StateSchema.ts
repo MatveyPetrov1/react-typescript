@@ -11,6 +11,7 @@ import {
 import { AxiosInstance } from "axios";
 import { NavigateOptions, To } from "react-router-dom";
 import { AppDispatch } from "./store";
+import { ArticleDetailsSchema } from "@/entities/Article";
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -19,6 +20,7 @@ export interface StateSchema {
   //Асинхронная залупа
   profile?: ProfileSchema;
   loginForm?: LoginSchema;
+  articleDetails?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -2,14 +2,6 @@
   padding: 0;
 }
 
-.title {
-  font: var(--font-l);
-}
-
-.text {
-  font: var(--font-m);
-}
-
 .primary {
   .title {
     color: var(--primary-text);
@@ -40,4 +32,34 @@
 
 .center {
   text-align: center;
+}
+
+.sizeM {
+  .title {
+    font: var(--font-l);
+  }
+
+  .text {
+    font: var(--font-m);
+  }
+}
+
+.sizeM {
+  .title {
+    font: var(--font-l);
+  }
+
+  .text {
+    font: var(--font-m);
+  }
+}
+
+.sizeL {
+  .title {
+    font: var(--font-xl);
+  }
+
+  .text {
+    font: var(--font-l);
+  }
 }
